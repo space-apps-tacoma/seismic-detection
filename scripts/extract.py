@@ -17,12 +17,12 @@ mars_cat_file = mars_cat_directory + 'Mars_InSight_training_catalog_final.csv'
 mars_train_dir = './data/mars/training/data/'
 mars_test_dir = './data/mars/test/data/'
 
-def extract_data(source, data_set, source_type):
+def extract_data(source, data_set, file_type):
     """
     This function extracts the given data and returns a pandas DataFrame
     """
     # Return lunar training data from csvs
-    if (source_type == 'lunar' and data_set == 'train') and source_type == 'csv':
+    if (source == 'lunar' and data_set == 'train') and file_type == 'csv':
         # Lunar training data
         print('Extracting lunar training data...')
         lunar_train = []
@@ -43,7 +43,7 @@ def extract_data(source, data_set, source_type):
         return lunar_train_df
     
     # Return lunar catalog data
-    elif (source_type == 'lunar' and data_set == 'catalog') and source_type == 'csv':
+    elif (source == 'lunar' and data_set == 'catalog') and file_type == 'csv':
         # Lunar catalog data
         print('Extracting lunar catalog data...')
         lunar_cat = pd.read_csv(lunar_cat_file)
@@ -57,7 +57,7 @@ def extract_data(source, data_set, source_type):
         print(lunar_cat.tail())
         return lunar_cat
     
-    elif (source_type == 'mars' and data_set == 'catalog') and source_type == 'csv':
+    elif (source == 'mars' and data_set == 'catalog') and file_type == 'csv':
         # Mars catalog data
         print('Extracting mars catalog data...')
         mars_cat = pd.read_csv(mars_cat_file)
@@ -72,7 +72,7 @@ def extract_data(source, data_set, source_type):
         return mars_cat
     
     # Return mars training data from csvs
-    elif (source_type == 'mars' and data_set == 'train') and source_type == 'csv':
+    elif (source == 'mars' and data_set == 'train') and file_type == 'csv':
         # Mars training data
         print('Extracting mars training data...')
         mars_train = []
@@ -93,7 +93,7 @@ def extract_data(source, data_set, source_type):
         return mars_train_df
     
     # Return mars test data from csvs
-    elif (source_type == 'mars' and data_set == 'test') and source_type == 'csv':
+    elif (source == 'mars' and data_set == 'test') and file_type == 'csv':
         # Mars test data
         print('Extracting mars test data...')
         mars_test = []
@@ -115,6 +115,6 @@ def extract_data(source, data_set, source_type):
 
     # Print suggestion for valid entry
     else:
-        print("""Valid entris are ['lunar','train','csv'], ['lunar','catalog','csv'],
+        print("""Valid entries are ['lunar','train','csv'], ['lunar','catalog','csv'],
                 and ['mars','catalog','csv'], ['mars','train','csv'], 
               ['mars','test','csv']""")
