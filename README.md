@@ -30,3 +30,9 @@ mars_train = extract.extract_data('mars', 'train', 'csv')
 mars_catalog = extract.extract_data('mars', 'catalog', 'csv')
 mars_test = extract.extract_data('mars', 'test', 'csv')
 ```
+
+## Interpreting Data
+
+### Lunar Seismic Data
+
+### Mars Seismic Data
