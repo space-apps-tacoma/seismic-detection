@@ -14,3 +14,19 @@ cloned repository.
 
 With your environment ready, you can install the dependencies by running the following command from your terminal:
 `pip install -r requirements.txt`
+
+## Extracting Data
+
+The `extract.py` script will extract and returned the desired data as a single pandas DataFrame. The extract_data 
+function within this script loops through the data sets of interest and concatenates them together. Each data set 
+of interest can be obtained with the code below:
+
+```python
+import extract
+
+lunar_train = extract.extract_data('lunar', 'train', 'csv')
+lunar_catalog = extract.extract_data('lunar', 'catalog', 'csv')
+mars_train = extract.extract_data('mars', 'train', 'csv')
+mars_catalog = extract.extract_data('mars', 'catalog', 'csv')
+mars_test = extract.extract_data('mars', 'test', 'csv')
+```
