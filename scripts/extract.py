@@ -9,15 +9,19 @@ import os
 lunar_cat_directory = './data/lunar/training/catalogs/'
 lunar_cat_file = lunar_cat_directory + 'apollo12_catalog_GradeA_final.csv'
 lunar_train_dir = './data/lunar/training/data/S12_GradeA/'
+lunar_test_dir = './data/lunar/test/data/'
 
 # Mars data paths
 mars_cat_directory = './data/mars/training/catalogs/'
 mars_cat_file = mars_cat_directory + 'Mars_InSight_training_catalog_final.csv'
+mars_train_dir = './data/mars/training/data/'
+mars_test_dir = './data/mars/test/data/'
 
 def extract_data(source, data_set, source_type):
     """
     This function extracts the given data and returns a pandas DataFrame
     """
+    # Return lunar training data from csvs
     if (source_type == 'lunar' and data_set == 'train') and source_type == 'csv':
         # Lunar training data
         print('Extracting lunar training data...')
@@ -38,6 +42,7 @@ def extract_data(source, data_set, source_type):
         print(lunar_train_df.tail())
         return lunar_train_df
     
+    # Return lunar catalog data
     elif (source_type == 'lunar' and data_set == 'catalog') and source_type == 'csv':
         # Lunar catalog data
         print('Extracting lunar catalog data...')
@@ -51,9 +56,65 @@ def extract_data(source, data_set, source_type):
         print('\nTail:')
         print(lunar_cat.tail())
         return lunar_cat
-    else:
-        print("""Valid entris are ['lunar','train','csv'], ['lunar','catalog','csv']""")
+    
+    elif (source_type == 'mars' and data_set == 'catalog') and source_type == 'csv':
+        # Mars catalog data
+        print('Extracting mars catalog data...')
+        mars_cat = pd.read_csv(mars_cat_file)
+        
+        print('\nMars Catalog Data Details')
+        print('Shape:')
+        print(mars_cat.shape)
+        print('\nHead:')
+        print(mars_cat.head())
+        print('\nTail:')
+        print(mars_cat.tail())
+        return mars_cat
+    
+    # Return mars training data from csvs
+    elif (source_type == 'mars' and data_set == 'train') and source_type == 'csv':
+        # Mars training data
+        print('Extracting mars training data...')
+        mars_train = []
+        for file in os.listdir(mars_train_dir):
+            if file.endswith('.csv'):
+                mars_train.append(pd.read_csv(mars_train_dir + file))
+        
+        print('Concatenating mars training data...')
+        mars_train_df = pd.concat(mars_train)
+        
+        print('\nMars Training Data Details')
+        print('Shape:')
+        print(mars_train_df.shape)
+        print('\nHead:')
+        print(mars_train_df.head())
+        print('\nTail:')
+        print(mars_train_df.tail())
+        return mars_train_df
+    
+    # Return mars test data from csvs
+    elif (source_type == 'mars' and data_set == 'test') and source_type == 'csv':
+        # Mars test data
+        print('Extracting mars test data...')
+        mars_test = []
+        for file in os.listdir(mars_test_dir):
+            if file.endswith('.csv'):
+                mars_test.append(pd.read_csv(mars_test_dir + file))
+        
+        print('Concatenating mars test data...')
+        mars_test_df = pd.concat(mars_test)
+        
+        print('\nMars Test Data Details')
+        print('Shape:')
+        print(mars_test_df.shape)
+        print('\nHead:')
+        print(mars_test_df.head())
+        print('\nTail:')
+        print(mars_test_df.tail())
+        return mars_test_df
 
-# Mars catalog data
-mars_cat = pd.read_csv(mars_cat_file)
-mars_cat['filename'] = mars_cat['filename'].str.replace('.csv','')
+    # Print suggestion for valid entry
+    else:
+        print("""Valid entris are ['lunar','train','csv'], ['lunar','catalog','csv'],
+                and ['mars','catalog','csv'], ['mars','train','csv'], 
+              ['mars','test','csv']""")
