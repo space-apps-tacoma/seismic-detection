@@ -86,6 +86,7 @@ def extract_data(source, data_set, file_type):
         # Mars catalog data
         print('Extracting mars catalog data...')
         mars_cat = pd.read_csv(mars_cat_file)
+        mars_cat['filename'] = mars_cat['filename'].str.strip('.csv')
         
         print('\nMars Catalog Data Details')
         print('Shape:')
