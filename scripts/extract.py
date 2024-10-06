@@ -26,10 +26,14 @@ def extract_data(source, data_set, file_type):
         # Lunar training data
         print('Extracting lunar training data...')
         lunar_train = []
+        # Append data from each csv while performing data cleaning
         for file in os.listdir(lunar_train_dir):
             if file.endswith('.csv'):
                 df = pd.read_csv(lunar_train_dir + file)
-                df['filename'] = file
+                df['filename'] = file.strip('.csv')
+                df.rename(columns={'time_abs(%Y-%m-%dT%H:%M:%S.%f)':'time_abs'}, inplace=True)
+                df.rename(columns={'time_rel(sec)':'rel_time(sec)'}, inplace=True)
+                df['time_abs'] = pd.to_datetime(df['time_abs'], format='%Y-%m-%dT%H:%M:%S.%f')
                 lunar_train.append(df)
         
         print('Concatenating lunar training data...')
@@ -51,6 +55,9 @@ def extract_data(source, data_set, file_type):
         # Lunar catalog data
         print('Extracting lunar catalog data...')
         lunar_cat = pd.read_csv(lunar_cat_file)
+        lunar_cat.rename(columns={'time_abs(%Y-%m-%dT%H:%M:%S.%f)':'time_abs'}, inplace=True)
+        lunar_cat.rename(columns={'time_rel(sec)':'rel_time(sec)'}, inplace=True)
+        lunar_cat['time_abs'] = pd.to_datetime(lunar_cat['time_abs'], format='%Y-%m-%dT%H:%M:%S.%f')
         
         print('\nLunar Catalog Data Details')
         print('\nShape:')
@@ -67,12 +74,15 @@ def extract_data(source, data_set, file_type):
         # Lunar test data
         print('Extracting lunar test data...')
         lunar_test = []
+        # Append data from each csv while performing data cleaning
         for dir in os.listdir(lunar_test_dir):
             for file in os.listdir(os.path.join(lunar_test_dir, dir)):
                 if file.endswith('.csv'):
                     df = pd.read_csv(os.path.join(lunar_test_dir, dir, file))
-                    df['directory'] = dir
-                    df['filename'] = file
+                    df['filename'] = file.strip('.csv')
+                    df.rename(columns={'time(%Y-%m-%dT%H:%M:%S.%f)':'time_abs'}, inplace=True)
+                    df.rename(columns={'time_rel(sec)':'rel_time(sec)'}, inplace=True)
+                    df['time_abs'] = pd.to_datetime(df['time_abs'], format='%Y-%m-%dT%H:%M:%S.%f')
                     lunar_test.append(df)
         
         print('Concatenating lunar test data...')
@@ -93,6 +103,9 @@ def extract_data(source, data_set, file_type):
         print('Extracting mars catalog data...')
         mars_cat = pd.read_csv(mars_cat_file)
         mars_cat['filename'] = mars_cat['filename'].str.strip('.csv')
+        mars_cat.rename(columns={'time_abs(%Y-%m-%dT%H:%M:%S.%f)':'time_abs'}, inplace=True)
+        mars_cat.rename(columns={'time_rel(sec)':'rel_time(sec)'}, inplace=True)
+        mars_cat['time_abs'] = pd.to_datetime(mars_cat['time_abs'], format='%Y-%m-%dT%H:%M:%S.%f')
         
         print('\nMars Catalog Data Details')
         print('\nShape:')
@@ -110,10 +123,13 @@ def extract_data(source, data_set, file_type):
         # Mars training data
         print('Extracting mars training data...')
         mars_train = []
+        # Append data from each csv while performing data cleaning
         for file in os.listdir(mars_train_dir):
             if file.endswith('.csv'):
                 df = pd.read_csv(mars_train_dir + file)
-                df['filename'] = file
+                df['filename'] = file.strip('.csv')
+                df.rename(columns={'time(%Y-%m-%dT%H:%M:%S.%f)':'time_abs'}, inplace=True)
+                df['time_abs'] = pd.to_datetime(df['time_abs'], format='%Y-%m-%dT%H:%M:%S.%f')
                 mars_train.append(df)
         
         print('Concatenating mars training data...')
@@ -135,10 +151,13 @@ def extract_data(source, data_set, file_type):
         # Mars test data
         print('Extracting mars test data...')
         mars_test = []
+        # Append data from each csv while performing data cleaning
         for file in os.listdir(mars_test_dir):
             if file.endswith('.csv'):
                 df = pd.read_csv(mars_test_dir + file)
-                df['filename'] = file
+                df['filename'] = file.strip('.csv')
+                df.rename(columns={'time(%Y-%m-%dT%H:%M:%S.%f)':'time_abs'}, inplace=True)
+                df['time_abs'] = pd.to_datetime(df['time_abs'], format='%Y-%m-%dT%H:%M:%S.%f')
                 mars_test.append(df)
         
         print('Concatenating mars test data...')
