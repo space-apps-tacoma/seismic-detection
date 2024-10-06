@@ -1,6 +1,6 @@
-# seismic-detection
+# Seismic Detection Across the Solar System
 
-NASA Space Apps 2024 entry from team Seismic Surge for the challenge of Seismic Detection Across the Solar System
+NASA Space Apps 2024 entry from team [Seismic Surge](https://www.spaceappschallenge.org/nasa-space-apps-2024/find-a-team/seismic-surge/).
 
 ## Loading Space Apps Data
 
@@ -83,6 +83,17 @@ using either P or S wave to determine the general time of an event. Both the P a
 When working to install the package, we kept running into a ModuleNotFoundError: No mudle named 'distutils.msvcompiler'. Further documentation 
 for EQTransformer can be found at [EQTransformer Docs](https://eqtransformer.readthedocs.io/en/latest/index.html).
 
-#### 
+#### EventDetector
 
-#### Custom Models
+[EventDetector](https://github.com/menouarazib/eventdetector) is a Python library for deep learning-based event detection in multivariate time 
+series data which utilizes TensorFlow. More information regarding their model design can be found in their paper [Universal Event Detection in Time Series](https://osf.io/preprints/osf/uabjg).
+
+### Custom Models
+
+When it comes to designing a model from scratch, the purpose of an event detection model is to focus on change point detection (CPD) as noted 
+in the paper [A survey of methods for time series change point detection](https://link.springer.com/article/10.1007/s10115-016-0987-z). This 
+refers to the problem of finding abrupt changes in data over a change of time. In the case of seismic detection, the abrupt change being 
+velocity registered by the seismic instruments.
+
+As discussed in `demo_notebook.ipynb` an approach of assessing the short term average to long term average (STA/LTA) can be used for this 
+change point detection.
