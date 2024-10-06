@@ -7,8 +7,23 @@ NASA Space Apps 2024 entry from team Seismic Surge for the challenge of Seismic 
 Data for this challenge can be found at the NASA Space App Challenge Page [Seismic Detection Across the Solar System](https://www.spaceappschallenge.org/nasa-space-apps-2024/challenges/seismic-detection-across-the-solar-system/?tab=resources). 
 Click on the Space Apps 2024 Seismic Detection Data Packet to download the data and demo notebook as a zipped folder.
 
+### Local Environment
 Once you have downloaded the data packet and unzipped the folder, the data directory can be copied into the main directory for this 
-cloned repository.
+cloned repository to be used locally.
+
+### Colab Environment
+
+To access the data through a shared Google Colab notebook, the project repository can be uploaded to a shared Google drive and then 
+mounted to the notebook using the code below. This is utilized in the `nasa2024_colab_notebook.ipynb`.
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+```
+
+```python
+%cd /content/drive/My Drive/space_apps_2024_seismic_detection
+```
 
 ## Installing Dependencies
 
