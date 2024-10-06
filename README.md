@@ -18,8 +18,8 @@ With your environment ready, you can install the dependencies by running the fol
 ## Extracting Data
 
 The `extract.py` script will extract and returned the desired data as a single pandas DataFrame. The extract_data 
-function within this script loops through the data sets of interest and concatenates them together. Each data set 
-of interest can be obtained with the code below:
+function within this script loops through the data sets of interest and concatenates them together while performing data cleaning and 
+transformations as needed. Each data set of interest can be obtained with the code below:
 
 ```python
 import extract
@@ -42,3 +42,13 @@ The `mars_demo_notebook.ipynb` takes the lunar `demo_notebook.ipynb` and adapts 
 * Bandpass - a function in obspy that helps with filtering data. In this case it filters out data between the min and max frequencies given.
 * Highpass - similar to bandpass but handles frequencies above 10 hz, which is bandpass cap. this is the one mars data uses to filter, but the notebook will recognize that bandpass can't handle it and automatically shift to highpass. frequencies above the specified frequency are allowed through.
 * Lowpass - frequencies below the given frequency are  allowed to come through.
+
+## Model Development
+
+There are many different options for model development, such as pre-built neural networks for earthquake detection, event detection, or 
+even designing a model from scratch.
+
+### Pre-Built Models
+
+
+### Custom Models
