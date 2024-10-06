@@ -28,7 +28,9 @@ def extract_data(source, data_set, file_type):
         lunar_train = []
         for file in os.listdir(lunar_train_dir):
             if file.endswith('.csv'):
-                lunar_train.append(pd.read_csv(lunar_train_dir + file))
+                df = pd.read_csv(lunar_train_dir + file)
+                df['filename'] = file
+                lunar_train.append(df)
         
         print('Concatenating lunar training data...')
         lunar_train_df = pd.concat(lunar_train)
@@ -57,6 +59,29 @@ def extract_data(source, data_set, file_type):
         print(lunar_cat.tail())
         return lunar_cat
     
+    elif (source == 'lunar' and data_set == 'test') and file_type == 'csv':
+        # Lunar test data
+        print('Extracting lunar test data...')
+        lunar_test = []
+        for dir in os.listdir(lunar_test_dir):
+            for file in os.listdir(os.path.join(lunar_test_dir, dir)):
+                if file.endswith('.csv'):
+                    df = pd.read_csv(os.path.join(lunar_test_dir, dir, file))
+                    df['directory'] = dir
+                    df['filename'] = file
+                    lunar_test.append(df)
+        
+        print('Concatenating lunar test data...')
+        lunar_test_df = pd.concat(lunar_test)
+        
+        print('\nLunar Test Data Details')
+        print('Shape:')
+        print(lunar_test_df.shape)
+        print('\nHead:')
+        print(lunar_test_df.head())
+        print('\nTail:')
+        print(lunar_test_df.tail())
+    
     elif (source == 'mars' and data_set == 'catalog') and file_type == 'csv':
         # Mars catalog data
         print('Extracting mars catalog data...')
@@ -78,7 +103,9 @@ def extract_data(source, data_set, file_type):
         mars_train = []
         for file in os.listdir(mars_train_dir):
             if file.endswith('.csv'):
-                mars_train.append(pd.read_csv(mars_train_dir + file))
+                df = pd.read_csv(mars_train_dir + file)
+                df['filename'] = file
+                mars_train.append(df)
         
         print('Concatenating mars training data...')
         mars_train_df = pd.concat(mars_train)
@@ -99,7 +126,9 @@ def extract_data(source, data_set, file_type):
         mars_test = []
         for file in os.listdir(mars_test_dir):
             if file.endswith('.csv'):
-                mars_test.append(pd.read_csv(mars_test_dir + file))
+                df = pd.read_csv(mars_test_dir + file)
+                df['filename'] = file
+                mars_test.append(df)
         
         print('Concatenating mars test data...')
         mars_test_df = pd.concat(mars_test)
@@ -115,6 +144,6 @@ def extract_data(source, data_set, file_type):
 
     # Print suggestion for valid entry
     else:
-        print("""Valid entries are ['lunar','train','csv'], ['lunar','catalog','csv'],
-                and ['mars','catalog','csv'], ['mars','train','csv'], 
-              ['mars','test','csv']""")
+        print("""Valid entries are ('lunar','train','csv'), ('lunar','catalog','csv'),
+              ('lunar','test','csv'), ('mars','catalog','csv'), ('mars','train','csv'), 
+              ('mars','test','csv')""")
