@@ -33,7 +33,7 @@ def extract_data(source, data_set, file_type):
                 lunar_train.append(df)
         
         print('Concatenating lunar training data...')
-        lunar_train_df = pd.concat(lunar_train)
+        lunar_train_df = pd.concat(lunar_train).reset_index(drop=True)
         
         print('\nLunar Training Data Details')
         print('Shape:')
@@ -72,7 +72,7 @@ def extract_data(source, data_set, file_type):
                     lunar_test.append(df)
         
         print('Concatenating lunar test data...')
-        lunar_test_df = pd.concat(lunar_test)
+        lunar_test_df = pd.concat(lunar_test).reset_index(drop=True)
         
         print('\nLunar Test Data Details')
         print('Shape:')
@@ -109,7 +109,7 @@ def extract_data(source, data_set, file_type):
                 mars_train.append(df)
         
         print('Concatenating mars training data...')
-        mars_train_df = pd.concat(mars_train)
+        mars_train_df = pd.concat(mars_train).reset_index(drop=True)
         
         print('\nMars Training Data Details')
         print('Shape:')
@@ -132,7 +132,7 @@ def extract_data(source, data_set, file_type):
                 mars_test.append(df)
         
         print('Concatenating mars test data...')
-        mars_test_df = pd.concat(mars_test)
+        mars_test_df = pd.concat(mars_test).reset_index(drop=True)
         
         print('\nMars Test Data Details')
         print('Shape:')
