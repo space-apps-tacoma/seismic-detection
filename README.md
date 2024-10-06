@@ -80,8 +80,9 @@ using either P or S wave to determine the general time of an event. Both the P a
 
 ![P and S waves in EQTransformer](images/p_and_s_waves.JPG)
 
-When working to install the package, we kept running into a ModuleNotFoundError: No mudle named 'distutils.msvcompiler'.
+When working to install the package, we kept running into a ModuleNotFoundError: No mudle named 'distutils.msvcompiler'. Further documentation 
+for EQTransformer can be found at [EQTransformer Docs](https://eqtransformer.readthedocs.io/en/latest/index.html).
 
-
+#### 
 
 #### Custom Models
