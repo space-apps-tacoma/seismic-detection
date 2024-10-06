@@ -38,7 +38,7 @@ mars_test = extract.extract_data('mars', 'test', 'csv')
 
 ### Mars Seismic Data
  Mars demo book:
-        - some code has been adapted to be capable of handling data in the mars files,     such as accounting for differences between file structures and frequencies measured.
-    - Bandpass - a function in obspy that helps with filtering data. In this case it filters out data between the min and max frequencies given.
-    - Highpass - similar to bandpass but handles frequencies above 10 hz, which is bandpass cap. this is the one mars data uses to filter, but the notebook will recognize that bandpass can't handle it and automatically shift to highpass. frequencies above the specified frequency are allowed through.
-    - Lowpass - frequencies below the given frequency are  allowed to come through.
+    * some code has been adapted to be capable of handling data in the mars files, such as accounting for differences between file structures and frequencies measured.
+    * Bandpass - a function in obspy that helps with filtering data. In this case it filters out data between the min and max frequencies given.
+    * Highpass - similar to bandpass but handles frequencies above 10 hz, which is bandpass cap. this is the one mars data uses to filter, but the notebook will recognize that bandpass can't handle it and automatically shift to highpass. frequencies above the specified frequency are allowed through.
+    * Lowpass - frequencies below the given frequency are  allowed to come through.
