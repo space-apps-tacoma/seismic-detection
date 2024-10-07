@@ -35,7 +35,8 @@ With your environment ready, you can install the dependencies by running the fol
 ## Extracting Data
 
 To simplify working with the data, we've created python scripts to extract data in bulk from data sets of interest, 
-and perform data cleaning/transformations as needed. There are two separate scripts, each for working with the csv and miniseed data.
+and perform data cleaning/transformations as needed. There are two separate scripts, each for working with the csv and 
+miniseed data. Each script can be found in the `scripts` directory.
 
 ### CSV Data
 The `extract_csv.py` script can be used to extract and returned the desired csv data as a single pandas DataFrame. The extract_data 
