@@ -1,4 +1,5 @@
 # Provide a sample Random Forest ML Model for seismic event detection on Mars
+import extract
 import pandas as pd
 import numpy as np
 import os
@@ -10,17 +11,15 @@ from obspy.signal.trigger import classic_sta_lta, plot_trigger, trigger_onset
 
 # Reading mseed training data
 training_directory = './data/mars/training/data/'
-
 data = []
-
 for file in os.listdir(training_directory):
     if file.endswith('.mseed'):
         st = read(f'{training_directory}{file}')
         data.append(st)
-
 print(data)
 
-"""
+# Mars training data
+mars_train = extract.extract_data('mars', 'train', 'csv')
 
 # Mars window lengths
 mars_short = 100
@@ -46,14 +45,14 @@ mars_cft = classic_sta_lta(mars_tr_data, int(mars_short * mars_sampling_freq), i
 # Plot characteristic function
 fig,ax = plt.subplots(1,1,figsize=(12,3))
 ax.plot(mars_tr_times,mars_cft)
-ax.set_xlim([min(mars_tr_times),pd.Timestamp('2022-01-03 00:00:00')])
+ax.set_xlim([pd.Timestamp('2022-02-03 07:00:00'),pd.Timestamp('2022-02-03 09:00:00')])
 ax.set_xlabel('Time')
 ax.set_ylabel('Characteristic function')
 plt.show()
 
 # Mars triggers
 mars_thr_on = 2.5
-mars_thr_off = 1.0
+mars_thr_off = 2.0
 on_off = np.array(trigger_onset(mars_cft, mars_thr_on, mars_thr_off))
 
 # Plot on and off triggers
@@ -65,7 +64,6 @@ for i in np.arange(0,len(on_off)):
 
 # Plot seismogram
 ax.plot(mars_tr_times,mars_tr_data)
-ax.set_xlim([min(mars_tr_times),max(mars_tr_times)])
+ax.set_xlim([pd.Timestamp('2022-02-03 07:00:00'),pd.Timestamp('2022-02-03 09:00:00')])
 ax.legend()
 plt.show()
-"""
