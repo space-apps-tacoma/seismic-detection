@@ -4,3 +4,4 @@ obspy
 matplotlib
 scipy
 tensorflow
+keras
