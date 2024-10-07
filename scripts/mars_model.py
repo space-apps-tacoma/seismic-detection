@@ -9,15 +9,6 @@ from obspy.signal.invsim import cosine_taper
 from obspy.signal.filter import highpass
 from obspy.signal.trigger import classic_sta_lta, plot_trigger, trigger_onset
 
-# Reading mseed training data
-training_directory = './data/mars/training/data/'
-data = []
-for file in os.listdir(training_directory):
-    if file.endswith('.mseed'):
-        st = read(f'{training_directory}{file}')
-        data.append(st)
-print(data)
-
 # Mars training data
 mars_train = extract.extract_data('mars', 'train', 'csv')
 
