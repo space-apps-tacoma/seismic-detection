@@ -1,4 +1,4 @@
-# Collect all data sources for training and testing into their own 
+# Collect all data csv sources for training and testing into their own 
 # respective pandas DataFrames
 
 # import libraries

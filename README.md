@@ -34,19 +34,34 @@ With your environment ready, you can install the dependencies by running the fol
 
 ## Extracting Data
 
-The `extract.py` script can be used to extract and returned the desired data as a single pandas DataFrame. The extract_data 
+To simplify working with the data, we've created python scripts to extract data in bulk from data sets of interest, 
+and perform data cleaning/transformations as needed. There are two separate scripts, each for working with the csv and 
+miniseed data. Each script can be found in the `scripts` directory.
+
+### CSV Data
+The `extract_csv.py` script can be used to extract and returned the desired csv data as a single pandas DataFrame. The extract_data 
 function within this script loops through the data sets of interest and concatenates them together while performing data cleaning and 
 transformations as needed. Each data set of interest can be obtained with the code below:
 
 ```python
-import extract
+import extract_csv
 
-lunar_train = extract.extract_data('lunar', 'train', 'csv')
-lunar_catalog = extract.extract_data('lunar', 'catalog', 'csv')
-lunar_test = extract.extract_data('lunar', 'test', 'csv')
-mars_train = extract.extract_data('mars', 'train', 'csv')
-mars_catalog = extract.extract_data('mars', 'catalog', 'csv')
-mars_test = extract.extract_data('mars', 'test', 'csv')
+lunar_train = extract_csv.extract_data('lunar', 'train', 'csv')
+lunar_catalog = extract_csv.extract_data('lunar', 'catalog', 'csv')
+lunar_test = extract_csv.extract_data('lunar', 'test', 'csv')
+mars_train = extract_csv.extract_data('mars', 'train', 'csv')
+mars_catalog = extract_csv.extract_data('mars', 'catalog', 'csv')
+mars_test = extract_csv.extract_data('mars', 'test', 'csv')
+```
+
+### Miniseed Data
+
+The `extract_mseed.py` script can be used to extract and returned the desired miniseed data as a list of ObsPy streams. 
+This can be done by executing the follwoing commands. Currently it is only set up for returning the mars training data.
+
+```python
+import extract_mseed
+data = extract_mseed.extract_mseed()
 ```
 
 ## Interpreting Data
