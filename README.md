@@ -126,3 +126,38 @@ velocity registered by the seismic instruments.
 
 As discussed in `demo_notebook.ipynb` an approach of assessing the short term average to long term average (STA/LTA) can be used for this 
 change point detection.
+
+### Resources
+Discord 
+    https://discord.com/
+
+NASA Spaceapps Challenge 
+    https://www.spaceappschallenge.org/nasa-space-apps-2024/find-a-team/seismic-surge/?tab=project
+
+ChatGPT 
+    https://openai.com/chatgpt/
+
+VS Code 
+    https://code.visualstudio.com/
+
+Google CoLab  
+    https://colab.research.google.com/
+
+Google Gemini  
+    https://gemini.google.com/app
+
+ObsPy 
+    https://docs.obspy.org/
+
+EQTransformer 
+    https://github.com/smousavi05/EQTransformer
+
+EventDetector 
+    https://github.com/menouarazib/eventdetector
+
+Codeium 
+    https://codeium.com/
+    
+A survey of methods for time series change point detection 
+    https://link.springer.com/article/10.1007/s10115-016-0987-z
+
