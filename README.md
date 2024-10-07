@@ -68,6 +68,20 @@ data = extract_mseed.extract_mseed()
 
 ### Lunar Seismic Data
 
+The `lunar_model_notebook.ipynb` implements a machine learning model to distinguish between seismic events and noise in lunar mission data. By filtering out noise and identifying significant seismic activity, the model intends to ensure that only valuable data is transmitted back to Earth from lunar detection devices.
+
+* Objective: Automatically detect and differentiate seismic events from noise in lunar seismic data to optimize data transmission.
+* Data Source: Seismic data collected from lunar missions, stored in CSV files containing time and velocity measurements.
+* Model Architecture: An LSTM (Long Short-Term Memory) autoencoder designed for time series anomaly detection.
+
+#### Customization
+##### Hyperparameters:
+Adjust sequence_length to change the size of data sequences.
+Modify epochs and batch_size for training.
+Set a custom anomaly detection threshold based on your data.
+##### Model Architecture:
+Alter the number of LSTM layers or units to optimize performance.
+
 ### Mars Seismic Data
  
 The `mars_demo_notebook.ipynb` takes the lunar `demo_notebook.ipynb` and adapts the code to be capable of handling data in the mars files, 
