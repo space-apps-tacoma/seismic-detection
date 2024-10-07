@@ -75,11 +75,11 @@ The `lunar_model_notebook.ipynb` implements a machine learning model to distingu
 * Model Architecture: An LSTM (Long Short-Term Memory) autoencoder designed for time series anomaly detection.
 
 #### Customization
-##### Hyperparameters:
+* Hyperparameters:
 Adjust sequence_length to change the size of data sequences.
 Modify epochs and batch_size for training.
 Set a custom anomaly detection threshold based on your data.
-##### Model Architecture:
+* Model Architecture:
 Alter the number of LSTM layers or units to optimize performance.
 
 ### Mars Seismic Data
