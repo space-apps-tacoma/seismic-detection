@@ -136,36 +136,25 @@ data from 2022-02-03.
 ![Mars Trigger](images/mars_trigger.JPG)
 
 ### Resources
-Discord 
-    https://discord.com/
+* [Discord](https://discord.com/)
 
-NASA Spaceapps Challenge 
-    https://www.spaceappschallenge.org/nasa-space-apps-2024/find-a-team/seismic-surge/?tab=project
+* [NASA Spaceapps Challenge](https://www.spaceappschallenge.org/nasa-space-apps-2024/challenges/seismic-detection-across-the-solar-system/)
 
-ChatGPT 
-    https://openai.com/chatgpt/
+* [ChatGPT](https://openai.com/chatgpt/)
 
-VS Code 
-    https://code.visualstudio.com/
+* [VS Code](https://code.visualstudio.com/)
 
-Google CoLab  
-    https://colab.research.google.com/
+* [Google CoLab](https://colab.research.google.com/)
 
-Google Gemini  
-    https://gemini.google.com/app
+* [Google Gemini](https://gemini.google.com/app)
 
-ObsPy 
-    https://docs.obspy.org/
+* [ObsPy](https://docs.obspy.org/)
 
-EQTransformer 
-    https://github.com/smousavi05/EQTransformer
+* [EQTransformer](https://github.com/smousavi05/EQTransformer)
 
-EventDetector 
-    https://github.com/menouarazib/eventdetector
+* [EventDetector](https://github.com/menouarazib/eventdetector)
 
-Codeium 
-    https://codeium.com/
+* [Codeium](https://codeium.com/)
     
-A survey of methods for time series change point detection 
-    https://link.springer.com/article/10.1007/s10115-016-0987-z
+* [A survey of methods for time series change point detection](https://link.springer.com/article/10.1007/s10115-016-0987-z)
 
