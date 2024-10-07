@@ -1,5 +1,5 @@
 # Provide a sample Random Forest ML Model for seismic event detection on Mars
-import extract
+import extract_csv
 import pandas as pd
 import numpy as np
 import os
@@ -10,7 +10,7 @@ from obspy.signal.filter import highpass
 from obspy.signal.trigger import classic_sta_lta, plot_trigger, trigger_onset
 
 # Mars training data
-mars_train = extract.extract_data('mars', 'train', 'csv')
+mars_train = extract_csv.extract_data('mars', 'train', 'csv')
 
 # Mars window lengths
 mars_short = 100
