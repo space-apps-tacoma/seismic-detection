@@ -64,28 +64,10 @@ import extract_mseed
 data = extract_mseed.extract_mseed()
 ```
 
-## Interpreting Data
-
-### Lunar Seismic Data
-
-The `lunar_model_notebook.ipynb` implements a machine learning model to distinguish between seismic events and noise in lunar mission data. By filtering out noise and identifying significant seismic activity, the model intends to ensure that only valuable data is transmitted back to Earth from lunar detection devices.
-
-* Objective: Automatically detect and differentiate seismic events from noise in lunar seismic data to optimize data transmission.
-* Data Source: Seismic data collected from lunar missions, stored in CSV files containing time and velocity measurements.
-* Model Architecture: An LSTM (Long Short-Term Memory) autoencoder designed for time series anomaly detection.
-
-#### Customization
-* Hyperparameters:
-Adjust sequence_length to change the size of data sequences.
-Modify epochs and batch_size for training.
-Set a custom anomaly detection threshold based on your data.
-* Model Architecture:
-Alter the number of LSTM layers or units to optimize performance.
-
-### Mars Seismic Data
+### Demo Notebooks
  
-The `mars_demo_notebook.ipynb` takes the lunar `demo_notebook.ipynb` and adapts the code to be capable of handling data in the mars files, 
-such as accounting for differences between file structures and frequencies measured.
+The `mars_demo_notebook.ipynb` takes the lunar `demo_notebook.ipynb`, provided by Space Apps Challenge, and adapts the code to be capable of 
+handling data in the mars files, such as accounting for differences between file structures and frequencies measured.
 * Bandpass - a function in obspy that helps with filtering data. In this case it filters out data between the min and max frequencies given.
 * Highpass - similar to bandpass but handles frequencies above 10 hz, which is bandpass cap. this is the one mars data uses to filter, but the 
 notebook will recognize that bandpass can't handle it and automatically shift to highpass. frequencies above the specified frequency are 
@@ -124,5 +106,31 @@ in the paper [A survey of methods for time series change point detection](https:
 refers to the problem of finding abrupt changes in data over a change of time. In the case of seismic detection, the abrupt change being 
 velocity registered by the seismic instruments.
 
-As discussed in `demo_notebook.ipynb` an approach of assessing the short term average to long term average (STA/LTA) can be used for this 
-change point detection.
+#### Lunar Model
+
+The `lunar_model_notebook.ipynb` implements a machine learning model to distinguish between seismic events and noise in lunar mission data. By filtering out noise and identifying significant seismic activity, the model intends to ensure that only valuable data is transmitted back to Earth from lunar detection devices.
+
+* Objective: Automatically detect and differentiate seismic events from noise in lunar seismic data to optimize data transmission.
+* Data Source: Seismic data collected from lunar missions, stored in CSV files containing time and velocity measurements.
+* Model Architecture: An LSTM (Long Short-Term Memory) autoencoder designed for time series anomaly detection.
+
+##### Customization
+* Hyperparameters:
+Adjust sequence_length to change the size of data sequences.
+Modify epochs and batch_size for training.
+Set a custom anomaly detection threshold based on your data.
+* Model Architecture:
+Alter the number of LSTM layers or units to optimize performance.
+
+#### Mars Model
+As discussed in the demo notebooks, an approach of assessing the short term average to long term average (STA/LTA) can be used for this 
+change point detection. Working to replicate this approach, the `mars_model.py` script found in the `scripts` directory initiates the 
+process for such a model. This script takes all of the mars training data CSVs as one dataframe, and builds a character function 
+that can be used to detect change points in the data. Visualizations show subsets of the character function and the detected change over 
+time. Due to the large gap in time frames for the Mars training set, these visualizations are best viewed in small intervals (by original 
+file).
+
+Below is a visualization of the trigger event detection for our Mars model from the entire Mars training data set. It shows a subset of the 
+data from 2022-02-03.
+
+![Mars Trigger](images/mars_trigger.JPG)
